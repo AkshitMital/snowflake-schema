@@ -1,0 +1,188 @@
+{
+  "manifest_version": "1.0",
+  "adapter_name": "aps_markdown_notes",
+  "adapter_version": "0.1.0-checkpoint-a",
+  "pilot": {
+    "name": "APS markdown note adapter validation pilot",
+    "description": "Representative note bundles for validating the v2 generic content model before review app build.",
+    "corpus_goal_min": 20,
+    "corpus_goal_max": 30,
+    "notes": "This example is intentionally small. The real pilot should expand to 20-30 notes with the same shape."
+  },
+  "bundles": [
+    {
+      "bundle_id": "pep-weekly-2025-11-14",
+      "source": {
+        "source_system": "SharePoint Online",
+        "source_object_id": "sp-note-pep-weekly-2025-11-14",
+        "source_container": "APS Notes",
+        "source_path": "Strategy/PEP Weekly/2025-11-14 PEP Weekly.md",
+        "source_uri": "https://tenant.sharepoint.com/sites/APS/Shared%20Documents/Strategy/PEP%20Weekly/2025-11-14%20PEP%20Weekly.md",
+        "source_type": "NOTE",
+        "source_subtype": "STRATEGY_WEEKLY",
+        "source_title": "PEP Weekly - 2025-11-14",
+        "source_modified_at": "2025-11-14T18:12:00Z",
+        "source_exported_at": "2026-04-23T10:00:00Z",
+        "provenance": {
+          "export_tool": "markdown-converter"
+        }
+      },
+      "content": {
+        "markdown_path": "bundles/pep-weekly-2025-11-14/note.md",
+        "source_file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "assets": []
+      },
+      "expected": {
+        "edge_case_labels": ["strategy_level"],
+        "scopes": [
+          {
+            "scope_type": "STRATEGY",
+            "scope_entity_name": "PEP Weekly"
+          }
+        ],
+        "entities": [
+          {
+            "entity_type": "STRATEGY",
+            "entity_name": "PEP Weekly"
+          }
+        ]
+      }
+    },
+    {
+      "bundle_id": "saif-redemption-portfolio-note",
+      "source": {
+        "source_system": "SharePoint Online",
+        "source_container": "APS Notes",
+        "source_path": "Portfolio/SAIF/SAIF Portfolio Redemption.md",
+        "source_type": "NOTE",
+        "source_subtype": "PORTFOLIO_UPDATE",
+        "source_title": "SAIF Portfolio Redemption",
+        "source_modified_at": "2025-10-02T09:30:00Z"
+      },
+      "content": {
+        "markdown_path": "bundles/saif-redemption-portfolio-note/note.md",
+        "source_file_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "assets": []
+      },
+      "expected": {
+        "edge_case_labels": ["portfolio_level"],
+        "scopes": [
+          {
+            "scope_type": "PORTFOLIO",
+            "scope_entity_name": "SAIF"
+          }
+        ],
+        "entities": [
+          {
+            "entity_type": "PORTFOLIO",
+            "entity_name": "SAIF"
+          }
+        ]
+      }
+    },
+    {
+      "bundle_id": "decarb-partners-fund-i-q4-2025-webcast",
+      "source": {
+        "source_system": "SharePoint Online",
+        "source_object_id": "sp-note-decarb-q4-2025-webcast",
+        "source_container": "APS Notes",
+        "source_path": "Webcasts/Decarb Partners Fund I Q4 2025 Webcast/index.md",
+        "source_type": "WEBCAST",
+        "source_subtype": "IMAGE_HEAVY_MARKDOWN",
+        "source_title": "Decarb Partners Fund I Q4 2025 Webcast",
+        "source_modified_at": "2026-01-18T14:05:00Z"
+      },
+      "content": {
+        "markdown_path": "bundles/decarb-partners-fund-i-q4-2025-webcast/index.md",
+        "source_file_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "assets": [
+          {
+            "asset_id": "slide-001",
+            "asset_path": "bundles/decarb-partners-fund-i-q4-2025-webcast/assets/slide-001.png",
+            "file_name": "slide-001.png",
+            "asset_type": "SCREENSHOT",
+            "asset_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ocr_text_path": "bundles/decarb-partners-fund-i-q4-2025-webcast/assets/slide-001.ocr.txt"
+          },
+          {
+            "asset_id": "slide-002",
+            "asset_path": "bundles/decarb-partners-fund-i-q4-2025-webcast/assets/slide-002.png",
+            "file_name": "slide-002.png",
+            "asset_type": "SCREENSHOT",
+            "asset_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          }
+        ]
+      },
+      "expected": {
+        "edge_case_labels": ["image_heavy", "portfolio_level"],
+        "scopes": [
+          {
+            "scope_type": "PORTFOLIO",
+            "scope_entity_name": "Decarb Partners Fund I"
+          }
+        ]
+      }
+    },
+    {
+      "bundle_id": "multi-investment-commentary-2025-12",
+      "source": {
+        "source_system": "SharePoint Online",
+        "source_uri": "https://tenant.sharepoint.com/sites/APS/Shared%20Documents/Commentary/Multi%20Investment%20Commentary%202025-12.md",
+        "source_type": "NOTE",
+        "source_subtype": "INVESTMENT_COMMENTARY",
+        "source_title": "Multi Investment Commentary - 2025-12",
+        "source_modified_at": "2025-12-15T16:45:00Z"
+      },
+      "content": {
+        "markdown_path": "bundles/multi-investment-commentary-2025-12/note.md",
+        "source_file_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+      },
+      "expected": {
+        "edge_case_labels": ["multi_investment", "mixed_scope"],
+        "entities": [
+          {
+            "entity_type": "INVESTMENT",
+            "entity_name": "Example Investment A",
+            "expected_anchor": "sections/example-investment-a"
+          },
+          {
+            "entity_type": "INVESTMENT",
+            "entity_name": "Example Investment B",
+            "expected_anchor": "sections/example-investment-b"
+          }
+        ]
+      }
+    },
+    {
+      "bundle_id": "undated-strategy-note",
+      "source": {
+        "source_system": "Local Markdown Export",
+        "source_container": "APS Notes",
+        "source_path": "Strategy/Undated Strategy Note.md",
+        "source_type": "NOTE",
+        "source_subtype": "STRATEGY_NOTE",
+        "source_title": "Undated Strategy Note"
+      },
+      "content": {
+        "markdown_path": "bundles/undated-strategy-note/note.md",
+        "source_file_hash": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+      },
+      "expected": {
+        "edge_case_labels": ["strategy_level", "undated"],
+        "scopes": [
+          {
+            "scope_type": "STRATEGY",
+            "scope_entity_name": "Unknown Strategy"
+          }
+        ],
+        "dates": [
+          {
+            "date_type": "INGESTED",
+            "notes": "No source date is expected in this bundle; ingestion date is the only deterministic candidate."
+          }
+        ]
+      }
+    }
+  ]
+}
+

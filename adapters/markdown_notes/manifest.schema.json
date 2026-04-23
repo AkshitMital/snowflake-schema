@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aps.internal/schemas/markdown-note-pilot-manifest.schema.json",
+  "title": "APS Markdown Note Pilot Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest_version", "pilot", "bundles"],
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "adapter_name": {
+      "type": "string",
+      "default": "aps_markdown_notes"
+    },
+    "adapter_version": {
+      "type": "string"
+    },
+    "pilot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string" },
+        "corpus_goal_min": { "type": "integer", "minimum": 1, "default": 20 },
+        "corpus_goal_max": { "type": "integer", "minimum": 1, "default": 30 },
+        "notes": { "type": "string" }
+      }
+    },
+    "bundles": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/bundle" }
+    }
+  },
+  "$defs": {
+    "bundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bundle_id", "source", "content"],
+      "properties": {
+        "bundle_id": { "type": "string", "minLength": 1 },
+        "source": { "$ref": "#/$defs/source" },
+        "content": { "$ref": "#/$defs/content" },
+        "expected": { "$ref": "#/$defs/expected" },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_system", "source_type"],
+      "anyOf": [
+        { "required": ["source_object_id"] },
+        { "required": ["source_uri"] },
+        { "required": ["source_container", "source_path"] }
+      ],
+      "properties": {
+        "source_system": { "type": "string", "minLength": 1 },
+        "source_object_id": { "type": "string", "minLength": 1 },
+        "source_container": { "type": "string", "minLength": 1 },
+        "source_path": { "type": "string", "minLength": 1 },
+        "source_uri": { "type": "string", "minLength": 1 },
+        "source_reference": { "type": "string" },
+        "source_type": { "type": "string", "minLength": 1 },
+        "source_subtype": { "type": "string" },
+        "source_title": { "type": "string" },
+        "source_created_at": { "type": "string" },
+        "source_modified_at": { "type": "string" },
+        "source_exported_at": { "type": "string" },
+        "source_version_id": { "type": "string" },
+        "source_export_id": { "type": "string" },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["markdown_path"],
+      "properties": {
+        "markdown_path": { "type": "string", "minLength": 1 },
+        "markdown_sha256": { "type": "string" },
+        "source_file_hash": { "type": "string" },
+        "assets": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/asset" },
+          "default": []
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_path"],
+      "properties": {
+        "asset_id": { "type": "string" },
+        "asset_path": { "type": "string", "minLength": 1 },
+        "source_asset_uri": { "type": "string" },
+        "file_name": { "type": "string" },
+        "asset_type": {
+          "type": "string",
+          "enum": ["IMAGE", "CHART", "SCREENSHOT", "TABLE_IMAGE", "ATTACHMENT", "UNKNOWN"]
+        },
+        "asset_hash": { "type": "string" },
+        "ocr_text_path": { "type": "string" },
+        "caption_text_path": { "type": "string" },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "edge_case_labels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "strategy_level",
+              "portfolio_level",
+              "single_investment",
+              "multi_investment",
+              "undated",
+              "image_heavy",
+              "duplicate_or_reexport",
+              "revised",
+              "moved_file",
+              "mixed_scope",
+              "unresolved_entity_mentions"
+            ]
+          }
+        },
+        "scopes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/expected_scope" }
+        },
+        "entities": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/expected_entity" }
+        },
+        "dates": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/expected_date" }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "expected_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope_type"],
+      "properties": {
+        "scope_type": { "type": "string" },
+        "scope_entity_name": { "type": "string" },
+        "scope_entity_id": { "type": "string" }
+      }
+    },
+    "expected_entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity_type", "entity_name"],
+      "properties": {
+        "entity_type": { "type": "string" },
+        "entity_id": { "type": "string" },
+        "entity_name": { "type": "string" },
+        "expected_anchor": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "expected_date": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date_type"],
+      "properties": {
+        "date_type": { "type": "string" },
+        "date_value": { "type": "string" },
+        "period_start_date": { "type": "string" },
+        "period_end_date": { "type": "string" },
+        "date_text": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
+

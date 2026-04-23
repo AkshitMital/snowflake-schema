@@ -1,0 +1,81 @@
+[
+  {
+    "name": "rerun_stability",
+    "input": {
+      "source_system": "SharePoint Online",
+      "source_object_id": "sp-note-001",
+      "source_path": "Strategy/PEP Weekly/2025-11-14 PEP Weekly.md",
+      "content_fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "expected": {
+      "content_item_key": "SHAREPOINT_ONLINE:sp-note-001",
+      "content_version_key": "SHAREPOINT_ONLINE:sp-note-001:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  {
+    "name": "moved_file_stable_source_object_id_original",
+    "input": {
+      "source_system": "SharePoint Online",
+      "source_object_id": "sp-note-moved-001",
+      "source_path": "Old Folder/SAIF Portfolio Redemption.md",
+      "content_fingerprint": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "expected": {
+      "content_item_key": "SHAREPOINT_ONLINE:sp-note-moved-001",
+      "content_version_key": "SHAREPOINT_ONLINE:sp-note-moved-001:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  },
+  {
+    "name": "moved_file_stable_source_object_id_new_path",
+    "input": {
+      "source_system": "sharepoint online",
+      "source_object_id": "sp-note-moved-001",
+      "source_path": "New Folder/Archive/SAIF Portfolio Redemption.md",
+      "content_fingerprint": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    },
+    "expected": {
+      "content_item_key": "SHAREPOINT_ONLINE:sp-note-moved-001",
+      "content_version_key": "SHAREPOINT_ONLINE:sp-note-moved-001:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  },
+  {
+    "name": "same_content_same_fingerprint",
+    "input": {
+      "source_system": "SharePoint Online",
+      "source_object_id": "sp-note-same-content-001",
+      "source_path": "Commentary/Multi Investment Commentary.md",
+      "content_fingerprint": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "expected": {
+      "content_item_key": "SHAREPOINT_ONLINE:sp-note-same-content-001",
+      "content_version_key": "SHAREPOINT_ONLINE:sp-note-same-content-001:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    }
+  },
+  {
+    "name": "whitespace_path_normalization_a",
+    "input": {
+      "source_system": " SharePoint   Online ",
+      "source_container": " APS Notes ",
+      "source_path": "\\Strategy//PEP%20Weekly.md ",
+      "content_fingerprint": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    "expected": {
+      "content_item_key": "SHAREPOINT_ONLINE:aps notes/strategy/pep weekly.md",
+      "content_version_key": "SHAREPOINT_ONLINE:aps notes/strategy/pep weekly.md:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  },
+  {
+    "name": "whitespace_path_normalization_b",
+    "input": {
+      "source_system": "sharepoint-online",
+      "source_container": "aps notes",
+      "source_path": "strategy/pep weekly.md",
+      "content_fingerprint": "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+    },
+    "expected": {
+      "content_item_key": "SHAREPOINT_ONLINE:aps notes/strategy/pep weekly.md",
+      "content_version_key": "SHAREPOINT_ONLINE:aps notes/strategy/pep weekly.md:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  }
+]
+
